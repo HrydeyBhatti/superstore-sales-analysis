@@ -1,0 +1,44 @@
+'Queries'
+
+'Viewing the data'
+
+select * from orders
+limit 10;
+
+
+'Number of Orders'
+
+select COUNT(*) from orders;
+
+'Unique Regions'
+
+select distinct region from orders;
+
+
+'Solving business questions'
+
+'Question 1 - Which region generates the highest profit?'
+
+select region, sum(profit) as total_profit from orders
+group by region
+order BY total_profit desc;
+
+
+'Question 2 - Which product categories are most and least profitable?'
+
+select category, sum(profit) as profit from orders
+group by category 
+order by profit desc;
+
+
+'Question 3 - Which products have the most impact on losess?'
+
+select "Product Name", sum(profit) as total_profit_losses from orders
+where profit < 0
+group by "Product Name"
+order by total_profit_losses desc;
+
+
+
+
+	
