@@ -43,7 +43,6 @@ limit 10;
 'Question 4 - How does discount impact profit?'
 
 
-select discount, profit from orders
 
 
 
