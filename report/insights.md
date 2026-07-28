@@ -20,6 +20,6 @@ The data analysis will focus on the following questions:
 
 1.  Which region generates the highest profit?
 2. Which product categories are most and least profitable?
-3. Whic products have the most impact on losess?
+3. Which products have the most impact on losess?
 4. How does discount impact profit?
 5. What are the monthly sales trends?
