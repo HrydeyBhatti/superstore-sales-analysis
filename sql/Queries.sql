@@ -33,10 +33,18 @@ order by profit desc;
 
 'Question 3 - Which products have the most impact on losess?'
 
-select "Product Name", sum(profit) as total_profit_losses from orders
+select "Product Name", round(sum(profit)::numeric, 2) as total_profit_losses from orders
 where profit < 0
 group by "Product Name"
-order by total_profit_losses desc;
+order by total_profit_losses asc
+limit 10;
+
+
+'Question 4 - How does discount impact profit?'
+
+
+select discount, profit from orders
+
 
 
 
