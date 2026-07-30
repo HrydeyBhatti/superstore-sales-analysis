@@ -59,6 +59,16 @@ from orders
 group by discount
 order by discount;
 
+select discount,
+round(avg(profit)::numeric, 2) as average_profit
+from orders
+group by discount
+having avg(profit) < 0
+order by average_profit 
+
+
+
+
 
 
 	
