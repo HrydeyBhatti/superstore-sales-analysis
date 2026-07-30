@@ -42,9 +42,12 @@ limit 10;
 
 'Question 4 - How does discount impact profit?'
 
-
-
-
+select discount, round(avg(profit)::numeric, 2) as average_profit,
+round(sum(profit)::numeric, 2) as total_profit,
+count(*) as number_of_orders
+from orders
+group by discount
+order by discount;
 
 
 
