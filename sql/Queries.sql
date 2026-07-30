@@ -51,4 +51,14 @@ order by discount;
 
 
 
+select discount,
+round(sum(sales)::numeric, 2) as total_sales,
+round(avg(profit)::numeric, 2) as average_profit,
+round(sum(profit)::numeric, 2) as total_profit
+from orders
+group by discount
+order by discount;
+
+
+
 	
