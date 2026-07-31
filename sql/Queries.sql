@@ -67,6 +67,19 @@ having avg(profit) < 0
 order by average_profit 
 
 
+'5. What are the monthly sales trends?'
+
+select
+extract(year from to_date("Order Date", 'MM/DD/YYYY'))::int as "year",
+extract(month from to_date("Order Date", 'MM/DD/YYYY'))::int as "month",
+sum(sales) as total_sales
+from orders
+group by extract(month from to_date("Order Date", 'MM/DD/YYYY')),
+extract(year from to_date("Order Date", 'MM/DD/YYYY'))
+order by "year",
+"month";
+
+
 
 
 
