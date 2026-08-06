@@ -23,3 +23,8 @@ The data analysis will focus on the following questions:
 3. Which products have the most impact on losess?
 4. How does discount impact profit?
 5. What are the monthly sales trends?
+6. Which product performs above the average profit?
+7. Which customers spend more than the average customer?
+8. Which region has sales above the company average?
+9. Which products have never made a profit?
+10. Which customers are in the top 10% by sales?
