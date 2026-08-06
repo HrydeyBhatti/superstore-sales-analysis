@@ -80,6 +80,16 @@ order by "year",
 "month";
 
 
+'6. Which products performs more than average profit?'
+
+select "Product Name",
+ROUND(profit::numeric,  2) as profit,
+ROUND((select avg(profit) from orders)::numeric, 2) as average_profit
+from orders
+where profit >
+(select avg(profit)
+from orders)
+order by profit desc;
 
 
 
