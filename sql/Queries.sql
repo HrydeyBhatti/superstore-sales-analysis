@@ -106,6 +106,20 @@ from customer_sales
 where total_sales > 5000
 order by total_sales desc;
 
+'8. Find the total sales for each Category, then show only categories with
+sales greater than 100,000'
+
+with category_sales as (
+	select category, Sum(sales) as total_category_sales
+	from orders
+	group by category
+)
+
+select *
+from category_sales
+where total_category_sales > 100000
+order by total_category_sales asc;
+
 
 
 	
