@@ -92,6 +92,8 @@ from orders)
 order by profit desc;
 
 
+'7. Which customers spend more than the average customer?'
+
 
 
 	
