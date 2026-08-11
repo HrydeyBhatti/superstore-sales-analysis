@@ -121,5 +121,29 @@ where total_category_sales > 100000
 order by total_category_sales asc;
 
 
+'9. Which customers spend more than the average customer?'
+
+with customer_sales as (
+	select "Customer Name", sum(sales) as total_customer_spend
+	from orders
+	group by "Customer Name" 
+	
+
+
+),
+
+avg_sales as (
+	select
+		avg(total_customer_spend) as avg_customer_spend
+	from customer_sales
+)
+
+select
+	customer_sales."Customer Name",
+	customer_sales.total_customer_spend,
+	avg_sales.avg_customer_spend
+from customer_sales
+cross join avg_sales
+where customer_sales.total_customer_spend > avg_sales.avg_customer_spend;
 
 	
