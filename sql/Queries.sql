@@ -92,7 +92,19 @@ from orders)
 order by profit desc;
 
 
-'7. Which customers spend more than the average customer?'
+'7. Which customers generated more than £5,000 in sales?'
+
+with customer_sales as  (
+	select "Customer Name", Sum(sales) as total_sales
+	from orders
+	group by "Customer Name"
+	
+)
+
+select *
+from customer_sales
+where total_sales > 5000
+order by total_sales desc;
 
 
 
