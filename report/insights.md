@@ -25,7 +25,9 @@ The data analysis will focus on the following questions:
 5. What are the monthly sales trends?
 6. Which product performs above the average profit?
 7. Which customers generated more then £5,000 in sales?
-8. Which customers spend more than the average customer?
-9. Which region has sales above the company average?
-10. Which products have never made a profit?
-11. Which customers are in the top 10% by sales?
+8. Find the total sales for each Category, then show only categories with total sales greater than 100,000.
+9. Which customers spend more than the average customer?
+10. Which region has sales above the company average?
+11. Which products have never made a profit?
+12. Which customers are in the top 10% by sales?
+
