@@ -121,29 +121,55 @@ where total_category_sales > 100000
 order by total_category_sales asc;
 
 
+
+
 '9. Which customers spend more than the average customer?'
 
 with customer_sales as (
-	select "Customer Name", sum(sales) as total_customer_spend
+	select "Customer Name", round(sum(sales)::numeric, 2) as total_customer_spend
 	from orders
 	group by "Customer Name" 
 	
 
 
 ),
-
 avg_sales as (
 	select
-		avg(total_customer_spend) as avg_customer_spend
+		round(avg(total_customer_spend)::numeric, 2) as avg_customer_spend
 	from customer_sales
 )
-
 select
 	customer_sales."Customer Name",
 	customer_sales.total_customer_spend,
 	avg_sales.avg_customer_spend
 from customer_sales
 cross join avg_sales
-where customer_sales.total_customer_spend > avg_sales.avg_customer_spend;
+where customer_sales.total_customer_spend > avg_sales.avg_customer_spend
+order by total_customer_spend desc;
 
-	
+
+
+
+'10. Which region has sales above the company average?'
+
+
+
+with regional_sales as (
+	select region, sum(sales) as total_sales
+	from orders
+	group by region
+),
+
+company_average as (
+	select
+		avg(total_sales) as avg_sales
+	from regional_sales
+)
+
+select
+	rs.region,
+	rs.total_sales
+from regional_sales rs
+cross join company_average ca
+where rs.total_sales > ca.avg_sales
+order by rs.total_sales desc;
