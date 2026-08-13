@@ -182,5 +182,30 @@ order by rs.total_sales desc;
 select "Product Name", sum(profit) as total_profit
 from orders
 group by "Product Name" 
-having sum(profit) >= 0
+having sum(profit) <= 0
 order by total_profit desc;
+
+
+'12. Which customers are in the top 10% of sales?'
+
+
+select
+	"Customer Name", sum(sales) as total_sales
+from orders
+group by "Customer Name"
+having sum(sales) >= (
+	select min(total_sales)
+	from (
+		select
+			"Customer Name",
+			sum(sales) as total_sales
+		from orders
+		group by "Customer Name"
+		order by total_sales desc
+		limit  (
+			select ceil(count(distinct "Customer Name") * 0.10)
+			from orders
+		)
+	)as top_10_percent
+)
+order by total_sales desc;
