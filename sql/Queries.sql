@@ -173,3 +173,14 @@ from regional_sales rs
 cross join company_average ca
 where rs.total_sales > ca.avg_sales
 order by rs.total_sales desc;
+
+
+
+'11. Which products have never made a profit?'
+
+
+select "Product Name", sum(profit) as total_profit
+from orders
+group by "Product Name" 
+having sum(profit) >= 0
+order by total_profit desc;
